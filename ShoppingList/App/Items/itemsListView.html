@@ -1,0 +1,17 @@
+﻿<table class="items-table">
+    <tr ng-class="{'selected': vm.allSelected}">
+        <th class="shrink"><input type="checkbox" ng-click="vm.selectAll()" ng-model="vm.allSelected" /></th>
+        <th class="sortable shrink" ng-click="vm.sortOn('frequency')"><i class="fa fa-sort"></i><span>#</span></th>
+        <th class="sortable" ng-click="vm.sortOn('name')"><i class="fa fa-sort"></i><span>Name</span></th>
+        <th class="sortable" ng-click="vm.sortOn('lastUpdated')">
+            <i class="fa fa-sort"></i><span>Last Updated</span>
+        </th>
+        <th class="button-cell"></th>
+    </tr>
+    <tr ng-repeat="item in vm.items | orderBy:vm.sortedOn:vm.reverse" ng-class="{'selected': item.selected}">
+        <th class="center-text"><input type="checkbox" ng-model="item.selected" ng-change="vm.setSelected(item)" value="{{item.id}}" id="{{item.id}}" name="item{{item.id}}" /></th>
+        <td class="center-text"><span>{{ item.frequency }}</span></td>
+        <td><span>{{ item.title }}</span></td>
+        <td><span>{{ item.lastUpdated  | date:'HH: mm, yyyy-MM-dd'}}</span></td>
+        <td class="center-text"><button class="btn btn-green" ng-click="vm.toggle(item)"><i class="fa fa-plus"></i></button></td>
+</table>
