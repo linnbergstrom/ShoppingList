@@ -18,6 +18,10 @@
         vm.setSelected = function (item) {
             vm.itemsController.setSelected(item);
         };
+
+        vm.selectAll = function() {
+            vm.itemsController.selectAll();
+        }
     };
 
     var slitemsList = {

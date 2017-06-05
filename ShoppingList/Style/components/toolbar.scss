@@ -1,0 +1,54 @@
+﻿/// <reference path="../abstracts/typography" />
+/// <reference path="../abstracts/colors" />
+
+.toolbar {
+    position: relative;
+    background-color: $theme-color;
+    padding: .5rem;
+    margin-right: -15px;
+    margin-left: -15px;
+    margin-bottom: 15px;
+
+    .toolbar-items {
+        display: flex;
+        width: 100%;
+            flex-wrap:wrap;
+    }
+
+    .toolbar-group {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        margin-right: auto;
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .action-button {
+        background-color: $theme-color-intense;
+        border-left: 0;
+        text-decoration:none;
+        color: rgba(0,0,0,.9);
+        cursor: pointer;
+        display: block;
+        font-size: 1rem;
+        line-height: 1.25rem;
+        margin-left: 0;
+        padding: .5em 1em;
+        border: 1px solid $border-color-base;
+        margin-left: 10px;
+    }
+
+    .toolbar-form {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+    }
+}
+
+.form-text {
+    background-color: #fff;
+    border: 1px solid $border-color-base;
+    font-size: 1rem;
+    padding: .5rem;
+}

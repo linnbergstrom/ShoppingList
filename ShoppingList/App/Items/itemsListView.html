@@ -1,17 +1,59 @@
-﻿<table class="items-table">
-    <tr ng-class="{'selected': vm.allSelected}">
-        <th class="shrink"><input type="checkbox" ng-click="vm.selectAll()" ng-model="vm.allSelected" /></th>
-        <th class="sortable shrink" ng-click="vm.sortOn('frequency')"><i class="fa fa-sort"></i><span>#</span></th>
-        <th class="sortable" ng-click="vm.sortOn('name')"><i class="fa fa-sort"></i><span>Name</span></th>
-        <th class="sortable" ng-click="vm.sortOn('lastUpdated')">
-            <i class="fa fa-sort"></i><span>Last Updated</span>
-        </th>
-        <th class="button-cell"></th>
-    </tr>
-    <tr ng-repeat="item in vm.items | orderBy:vm.sortedOn:vm.reverse" ng-class="{'selected': item.selected}">
-        <th class="center-text"><input type="checkbox" ng-model="item.selected" ng-change="vm.setSelected(item)" value="{{item.id}}" id="{{item.id}}" name="item{{item.id}}" /></th>
-        <td class="center-text"><span>{{ item.frequency }}</span></td>
-        <td><span>{{ item.title }}</span></td>
-        <td><span>{{ item.lastUpdated  | date:'HH: mm, yyyy-MM-dd'}}</span></td>
-        <td class="center-text"><button class="btn btn-green" ng-click="vm.toggle(item)"><i class="fa fa-plus"></i></button></td>
-</table>
+﻿<div class="list-container">
+    <div class="list-header" ng-class="{'selected': vm.allSelected}">
+        <div class="btn column custom-control item-checkbox">
+            <input class="custom-control-input" type="checkbox" ng-click="vm.selectAll()" ng-model="vm.allSelected" />
+            <span>All</span>
+        </div>
+        <div class="list-header-sort" ng-class="{'descending' : vm.reverse, 'ascending' : !vm.reverse}">
+            <div class="header-frequency sortable btn" ng-click="vm.sortOn('frequency')" ng-class="{'sorted-property' : vm.sortedOn==='frequency'}">
+                <span ng-show="vm.sortedOn==='frequency'">
+                    <i class="fa fa-sort-amount-desc" ng-show="vm.reverse"></i>
+                    <i class="fa fa-sort-amount-asc" ng-show="!vm.reverse"></i>
+                </span>
+                <span>Frequency</span>
+            </div>
+            <div class="header-name sortable btn" ng-click="vm.sortOn('title')"  ng-class="{'sorted-property' : vm.sortedOn==='title'}">
+                <span ng-show="vm.sortedOn==='title'">
+                    <i class="fa fa-sort-alpha-desc" ng-show="vm.reverse"></i>
+                    <i class="fa fa-sort-alpha-asc" ng-show="!vm.reverse"></i>
+                </span>
+                <span>Name</span>
+            </div>
+            <div class="header-updated sortable btn" ng-click="vm.sortOn('lastUpdated')"  ng-class="{'sorted-property' : vm.sortedOn==='lastUpdated'}">
+                <span ng-show="vm.sortedOn==='lastUpdated'">
+                    <i class="fa fa-sort-numeric-desc" ng-show="vm.reverse"></i>
+                    <i class="fa fa-sort-numeric-asc" ng-show="!vm.reverse"></i>
+                </span>
+                <span>Last Updated</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="item list-row" ng-repeat="item in vm.items | orderBy:vm.sortedOn:vm.reverse" ng-class="{'selected': item.selected}">
+        <div class="column custom-control item-checkbox">
+            <label for="{{item.id}}">
+                <input class="custom-control-input" type="checkbox" ng-model="item.selected" 
+                       ng-change="vm.setSelected(item)" value="{{item.id}}" id="{{item.id}}" name="item{{item.id}}" />
+                <i class="fa fa-square-o" ng-show="!item.selected"></i>
+                <i class="fa fa-check-square" ng-show="item.selected"></i>
+            </label>
+        </div>
+        <div class="column item-frequency">
+            <span>{{ item.frequency }}</span>
+        </div>
+        <div class="wrapper item-info">
+            <div class="item-name">
+                <span>{{ item.title }}</span>
+            </div>
+            <div class="wrapper item-updated">
+                <div class="date">{{ item.lastUpdated  | date:'dd MMM'}}</div>
+            </div>
+        </div>
+        <div class="item-action">
+        <button class="btn btn-green" ng-click="vm.toggle(item)">
+            <span ng-if="item.needed">Done</span>
+            <span ng-if="!item.needed">Add</span>
+            </button>
+        </div>
+    </div>
+</div>

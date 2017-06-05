@@ -1,10 +1,11 @@
 ﻿(function () {
     'use strict';
 
-    function itemsController(itemsService) {
+    function itemsController(itemsService, $location) {
         var vm = this;
 
         vm.$onInit = function () {
+            vm.hash = $location.hash();
             vm.items = [];
             vm.selectedItems = [];
 
@@ -32,6 +33,12 @@
                 item.selected = false;
                 vm.selectedItems.pop(item);
             }
+        }
+
+        vm.selectAll = function() {
+            vm.selectedItems = vm.items.map(function (item) {
+                return item.selected = true;
+            });
         }
 
         vm.addNew = function () {
@@ -69,7 +76,7 @@
     }
 
     angular.module('app')
-        .controller('itemsController', ['itemsService', itemsController])
+        .controller('itemsController', ['itemsService', '$location', itemsController])
         .component('slItems', slItems);
 
     //.config(function ($stateProvider) {

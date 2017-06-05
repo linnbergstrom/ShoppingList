@@ -205,12 +205,6 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Style\items.css">
-      <DependentUpon>items.scss</DependentUpon>
-    </Content>
-    <Content Include="Style\items.min.css">
-      <DependentUpon>items.css</DependentUpon>
-    </Content>
     <Content Include="Style\main.css">
       <DependentUpon>main.scss</DependentUpon>
     </Content>
@@ -227,14 +221,22 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Style\items.scss" />
-    <Content Include="Style\variables.scss" />
+    <Content Include="Style\base\items.scss" />
+    <Content Include="Style\abstracts\colors.scss" />
     <Content Include="Style\main.scss" />
-    <Content Include="Style\mixins.scss" />
+    <Content Include="Style\abstracts\mixins.scss" />
+    <Content Include="Style\components\toolbar.scss" />
+    <Content Include="Style\abstracts\typography.scss" />
+    <Content Include="Style\components\buttons.scss" />
+    <Content Include="Style\components\table.scss" />
+    <Content Include="Style\components\list.scss" />
+    <Content Include="Style\abstracts\variables.scss" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Style\layout\" />
+    <Folder Include="Style\themes\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

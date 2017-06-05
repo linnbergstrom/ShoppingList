@@ -1,0 +1,58 @@
+﻿/// <reference path="../abstracts/typography" />
+/// <reference path="../abstracts/colors" />
+
+//Table
+.items-table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    font-size: $font-size-base;
+    background-color: #fff;
+
+    tr.selected {
+        background-color: $theme-color;
+    }
+}
+
+tr {
+    /*&:nth-of-type(odd):not(:first-of-type) {
+        background-color: $theme-color;
+    }
+
+    &:nth-of-type(even) {
+        background-color: $theme-color-light;
+    }*/
+}
+
+th, td {
+    overflow: hidden;
+    padding: 4px 6px;
+    text-align: left;
+    border: 1px solid $border-color-base;
+
+    span {
+        padding-left: 6px;
+    }
+}
+
+th.shrink {
+    width: 40px;
+    text-align: center;
+}
+
+td .item-title {
+    font-weight: bold;
+}
+
+th.button-cell {
+    width: 66px;
+}
+
+th.sortable:hover {
+    cursor: pointer;
+    color: #bb0000;
+}
+
+.center-text {
+    text-align: center;
+}

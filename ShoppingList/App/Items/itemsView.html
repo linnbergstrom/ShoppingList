@@ -15,26 +15,27 @@
             </form>
             <ul class="toolbar-group">
                 <li ng-if="vm.selectedItems.length > 0">
-                    <a ng-if="vm.selectedItems[0].needed" ng-click="finishItems()" class="action-button">Completed</a>
-                    <a ng-if="!vm.selectedItems[0].needed"ng-click="NeedItems()" class="action-button">Need</a>
+                    <a ng-if="vm.selectedItems[0].needed" ng-click="finishItems()" class="action-button"><i class="fa fa-check"></i></a>
+                    <a ng-if="!vm.selectedItems[0].needed" ng-click="NeedItems()" class="action-button">Need</a>
                 </li>
                 <li ng-if="vm.selectedItems.length > 0 && !vm.selectedItems[0].needed">
                     <a ng-click="deleteItems()" class="action-button">Delete</a>
                 </li>
+                <li>
+                </li>
             </ul>
+            <div><a ng-href="#/needed" class="action-button">Needed</a></div>
         </div>
     </div>
-    <div class="row">
+    <div class="row" ng-switch on="vm.hash">
         <div class="needed-items">
             <div class="items-container">
-                <h3 class="header">Needed</h3>
-                <sl-items-list items="vm.neededItems" toggle="vm.toggle"></sl-items-list>
+                <sl-items-list items="vm.neededItems" on-toggle="vm.toggle(item)"></sl-items-list>
             </div>
         </div>
         <div class="available-items">
             <div class="items-container">
-                <h3 class="header">Available</h3>
-                <sl-items-list items="vm.availableItems" on-toggle="vm.toggle"></sl-items-list>
+                <sl-items-list items="vm.availableItems" on-toggle="vm.toggle(item)"></sl-items-list>
             </div>
         </div>
     </div>

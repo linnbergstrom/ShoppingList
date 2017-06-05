@@ -18,7 +18,7 @@
             }).catch(function (error) {
                 console.log(error);
             });
-        };
+        }
 
         function updateItem(item) {
             return $http.put('/api/items/' + item.id, item).then(function (response) {

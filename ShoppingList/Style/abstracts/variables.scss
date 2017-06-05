@@ -1,0 +1,18 @@
+﻿// Minimum widths for each breakpoint
+$breakpoint-min-xs: 326px !default;
+$breakpoint-min-sm: 480px !default;
+$breakpoint-min-md: 640px !default;
+$breakpoint-min-lg: 1024px !default;
+$breakpoint-min-xl: 1366px !default;
+$breakpoint-min-xxl: 1920px !default;
+
+// Maximum widths for each breakpoint
+$breakpoint-max-xs: ($breakpoint-min-xs - 1);
+$breakpoint-max-sm: ($breakpoint-min-sm - 1);
+$breakpoint-max-md: ($breakpoint-min-md - 1);
+$breakpoint-max-lg: ($breakpoint-min-lg - 1);
+$breakpoint-max-xl: ($breakpoint-min-xl - 1);
+$breakpoint-max-xxl: ($breakpoint-min-xxl - 1);
+
+
+
