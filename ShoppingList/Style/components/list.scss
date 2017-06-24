@@ -7,7 +7,7 @@
 }
 
 .column {
-    display:flex;
+    display: flex;
     flex-grow: 0;
     flex-shrink: 0;
 }
@@ -22,13 +22,20 @@
 .list-header {
 
     .btn {
-        /*background-color: #fff;*/
+        background-color: #fff;
         padding: .5rem;
         margin-right: 2px;
-        flex-grow:1;
+        margin: 5px;
+        padding: 10px;
+
+        &.sorted-property {
+            color: #000;
+            background-color: $theme-color-intense;
+        }
     }
+
     .item-checkbox {
-        flex-grow:0;
+        flex-grow: 0;
     }
 }
 
@@ -36,13 +43,7 @@
     display: flex;
     flex-wrap: wrap;
     flex-grow: 1;
-
-  .btn.sorted-property {
-        color: #000;
-        background-color:#fff;
-    }
-
-
+    margin-left: 10px;
 }
 
 .list-row {
@@ -57,12 +58,15 @@
     margin: 4px 0;
     padding: 0;
     width: 100%;
-    min-width: 280px;
-    max-width: 750px;
+    /*min-width: 280px;
+    max-width: 750px;*/
+    &.selected {
+        background-color: $theme-color-light;
+    }
 }
 
 .item-checkbox, .item-frequency {
-    width: 40px;
+    width: 50px;
     align-items: center;
     justify-content: center;
 }
@@ -82,16 +86,26 @@
 }
 
 .item-frequency {
-    justify-content:flex-start;
+    justify-content: flex-start;
+
+    .frame {
+        background-color: $theme-color;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        cursor: pointer;
+    }
 }
 
 .item-updated {
     width: 110px;
     display: flex;
+    flex-grow: 1;
     flex-direction: column;
 }
 
-.item-name, .item-updated {
+.flex-grow {
     flex-grow: 1;
 }
 
@@ -99,6 +113,7 @@
     font-weight: bold;
     width: 220px;
     display: flex;
+    flex-grow: 1;
     align-items: center;
     letter-spacing: 1.2px;
 }
@@ -112,28 +127,21 @@
 
 .sortable:hover {
     cursor: pointer;
-    color: #000000;
-    border-color: #000000;
+    color: #000;
+    border-color: #000;
 }
 
-.date, .hour {
+.no-wrap {
     white-space: nowrap;
 }
 
 .item-info {
     align-items: flex-start;
     flex-direction: column;
-    flex-grow: 1;
-    padding:2px;
+    padding: 2px 10px;
 }
 
 @media (max-width: $breakpoint-max-lg) {
-    /*   .item-info {
-        flex-direction: column;
-        align-items: flex-start;
-        flex-grow: 1;
-    }*/
-
     .item-name {
         width: 100%;
     }
@@ -147,12 +155,13 @@
     .list-row {
         border-radius: 0;
         border-left: 0;
-        padding:0;
+        padding: 0;
         border-right: none;
         margin: -1px;
     }
+
     .list-header {
-        margin:0;
-        padding:0;
+        margin: 0;
+        padding: 0;
     }
 }

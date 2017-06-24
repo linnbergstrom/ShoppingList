@@ -1,0 +1,70 @@
+﻿<div class="toolbar">
+    <div class="toolbar-title">
+        <span>{{vm.header}}</span>
+    </div>
+    <div class="toolbar-items">
+        <form class="toolbar-form" ng-if="vm.selectedItems.length ===1">
+            <div class="input-group">
+                <input placeholder="Edit selected item" class="form-text" id="editSelected" type="text" ng-model="vm.selectedItems[0].title" />
+                <button class="btn" type="submit">Edit</button>
+            </div>
+        </form>
+        <form class="toolbar-form" ng-if="vm.selectedItems.length < 1" ng-submit="vm.add()">
+            <div class="input-group">
+                <input placeholder="Add new item" class="form-text" id="editSelected" type="text" ng-model="vm.newItemName" />
+                <button class="btn" type="submit"><span><i class="fa fa-plus"></i></span></button>
+            </div>
+        </form>
+        <ul class="toolbar-group">
+            <li ng-if="vm.selectedItems.length > 0">
+                <a ng-click="vm.toggle()" class="action-button">
+                    <span ng-if="vm.selectedItems[0].needed">Finish Selected</span>
+                    <span ng-if="!vm.selectedItems[0].needed">Done</span>
+                </a>
+            </li>
+            <li ng-if="vm.selectedItems.length > 0 && !vm.selectedItems[0].needed">
+                <a ng-click="deleteItems()" class="action-button">Delete</a>
+            </li>
+            <li>
+            </li>
+        </ul>
+        <ul class="toolbar-group">
+            <li>
+                <button class="btn action-button toolbar-toggler" ng-click="vm.toggleSort()">
+                    <span><i class="fa fa-expand"></i></span>
+                </button>
+            </li>
+            <li>
+                <button ng-click="vm.itemsController.switchView()" class="action-button"><i class="fa" ng-class="{'fa-bookmark': vm.initialView, 'fa-arrow-left': !vm.initialView,}"></i></button>
+            </li>
+        </ul>
+    </div>
+    <div class="list-header" ng-show="vm.showSort">
+        <div class="btn column custom-control item-checkbox" ng-click="vm.selectAll()" ng-class="{'sorted-property': vm.allSelected}">
+            <span><i class="fa fa-check"></i></span>
+        </div>
+        <div class="list-header-sort" ng-class="{'descending' : vm.sorting.sortedDesc, 'ascending' : !vm.sorting.sortedDesc}">
+            <div class="header-frequency sortable btn" ng-click="vm.sortOn('frequency')" ng-class="{'sorted-property' : vm.sorting.sortedOn==='frequency'}">
+                <span ng-show="vm.sorting.sortedOn==='frequency'">
+                    <i class="fa fa-sort-amount-desc" ng-show="vm.sorting.sortedDesc"></i>
+                    <i class="fa fa-sort-amount-asc" ng-show="!vm.sorting.sortedDesc"></i>
+                </span>
+                <span>Popularity</span>
+            </div>
+            <div class="header-name sortable btn" ng-click="vm.sortOn('title')" ng-class="{'sorted-property' : vm.sorting.sortedOn==='title'}">
+                <span ng-show="vm.sorting.sortedOn==='title'">
+                    <i class="fa fa-sort-alpha-desc" ng-show="vm.sorting.sortedDesc"></i>
+                    <i class="fa fa-sort-alpha-asc" ng-show="!vm.sorting.sortedDesc"></i>
+                </span>
+                <span>Name</span>
+            </div>
+            <div class="header-updated sortable btn" ng-click="vm.sortOn('lastUpdated')" ng-class="{'sorted-property' : vm.sorting.sortedOn==='lastUpdated'}">
+                <span ng-show="vm.sorting.sortedOn==='lastUpdated'">
+                    <i class="fa fa-sort-numeric-desc" ng-show="vm.sorting.sortedDesc"></i>
+                    <i class="fa fa-sort-numeric-asc" ng-show="!vm.sorting.sortedDesc"></i>
+                </span>
+                <span>Last Updated</span>
+            </div>
+        </div>
+    </div>
+</div>

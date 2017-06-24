@@ -1,58 +1,34 @@
-﻿<div class="list-container">
-    <div class="list-header" ng-class="{'selected': vm.allSelected}">
-        <div class="btn column custom-control item-checkbox">
-            <input class="custom-control-input" type="checkbox" ng-click="vm.selectAll()" ng-model="vm.allSelected" />
-            <span>All</span>
-        </div>
-        <div class="list-header-sort" ng-class="{'descending' : vm.reverse, 'ascending' : !vm.reverse}">
-            <div class="header-frequency sortable btn" ng-click="vm.sortOn('frequency')" ng-class="{'sorted-property' : vm.sortedOn==='frequency'}">
-                <span ng-show="vm.sortedOn==='frequency'">
-                    <i class="fa fa-sort-amount-desc" ng-show="vm.reverse"></i>
-                    <i class="fa fa-sort-amount-asc" ng-show="!vm.reverse"></i>
-                </span>
-                <span>Frequency</span>
-            </div>
-            <div class="header-name sortable btn" ng-click="vm.sortOn('title')"  ng-class="{'sorted-property' : vm.sortedOn==='title'}">
-                <span ng-show="vm.sortedOn==='title'">
-                    <i class="fa fa-sort-alpha-desc" ng-show="vm.reverse"></i>
-                    <i class="fa fa-sort-alpha-asc" ng-show="!vm.reverse"></i>
-                </span>
-                <span>Name</span>
-            </div>
-            <div class="header-updated sortable btn" ng-click="vm.sortOn('lastUpdated')"  ng-class="{'sorted-property' : vm.sortedOn==='lastUpdated'}">
-                <span ng-show="vm.sortedOn==='lastUpdated'">
-                    <i class="fa fa-sort-numeric-desc" ng-show="vm.reverse"></i>
-                    <i class="fa fa-sort-numeric-asc" ng-show="!vm.reverse"></i>
-                </span>
-                <span>Last Updated</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="item list-row" ng-repeat="item in vm.items | orderBy:vm.sortedOn:vm.reverse" ng-class="{'selected': item.selected}">
+﻿<as-toolbar all-selected="vm.allSelected"
+            header="vm.header"
+            select-all="vm.selectAll()"
+            selected-items="vm.selectedItems"
+            sorting="vm.sorting"></as-toolbar>
+<div class="list-container">
+    <div class="item list-row" ng-click="vm.setSelected(item)" ng-repeat="item in vm.items | orderBy:vm.sorting.sortedOn:vm.sorting.sortedDesc" ng-class="{'selected': item.selected}">
         <div class="column custom-control item-checkbox">
             <label for="{{item.id}}">
-                <input class="custom-control-input" type="checkbox" ng-model="item.selected" 
-                       ng-change="vm.setSelected(item)" value="{{item.id}}" id="{{item.id}}" name="item{{item.id}}" />
-                <i class="fa fa-square-o" ng-show="!item.selected"></i>
-                <i class="fa fa-check-square" ng-show="item.selected"></i>
+                <i class="fa fa-circle-o" ng-show="!item.selected"></i>
+                <i class="fa fa-check" ng-show="item.selected"></i>
             </label>
         </div>
+
         <div class="column item-frequency">
-            <span>{{ item.frequency }}</span>
+            <div class="frame" title="Number of times completed">{{ item.frequency }}</div>
         </div>
-        <div class="wrapper item-info">
+
+        <div class="wrapper item-info flex-grow">
             <div class="item-name">
                 <span>{{ item.title }}</span>
+                <i class="fa fa-exclamation"></i>
             </div>
             <div class="wrapper item-updated">
-                <div class="date">{{ item.lastUpdated  | date:'dd MMM'}}</div>
+                <div class="no-wrap">{{ item.lastUpdated  | date:'dd MMM'}}</div>
             </div>
         </div>
         <div class="item-action">
-        <button class="btn btn-green" ng-click="vm.toggle(item)">
-            <span ng-if="item.needed">Done</span>
-            <span ng-if="!item.needed">Add</span>
+            <button class="btn btn-green" ng-click="vm.toggle(item)">
+                <span ng-if="item.needed">Complete</span>
+                <span ng-if="!item.needed">Need</span>
             </button>
         </div>
     </div>

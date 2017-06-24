@@ -1,36 +1,60 @@
 ﻿(function () {
     'use strict';
 
-    function itemsListController() {
+    function itemsListController(itemsService, sortingService) {
         var vm = this;
-        vm.reverse = true;
-        vm.sortedOn = 'frequency';
 
-        vm.sortOn = function (field) {
-            vm.sortedOn = field;
-            vm.reverse = !vm.reverse;
+        vm.selectedItems = [];
+        vm.sortedDesc = true;
+        vm.sorting = sortingService.sorting();
+
+        vm.setSelected = function (item) {
+            if (!item.selected) {
+                item.selected = true;
+                vm.selectedItems.push(item);
+            } else {
+                item.selected = false;
+                vm.selectedItems.pop(item);
+            }
+            vm.allSelected = vm.items.length === vm.selectedItems.length;
+        };
+
+        vm.selectAll = function () {
+            if (vm.allSelected) {
+                vm.selectedItems = [];
+                vm.allSelected = false;
+            } else {
+                vm.allSelected = true;
+            }
+            vm.selectedItems = vm.items.map(function (item) {
+                item.selected = vm.allSelected;
+                return item;
+            });
         };
 
         vm.toggle = function (item) {
-            onToggle({ item });
-        }
-
-        vm.setSelected = function (item) {
-            vm.itemsController.setSelected(item);
+            if (item.needed) {
+                item.frequency++;
+            }
+            item.needed = !item.needed;
+            itemsService.updateItem(item);
+            vm.itemsController.sortItems();
         };
 
-        vm.selectAll = function() {
-            vm.itemsController.selectAll();
-        }
+        vm.delete = function () {
+            itemService.delete(vm.selectedItems);
+            vm.selectedItems = [];
+        };
     };
 
-    var slitemsList = {
+    var asItemsList = {
         bindings: {
             items: '<',
-            onToggle: '&'
+            sorting: '<',
+            header: '@'
         },
         require: {
-            itemsController: '^^slItems'
+            itemsController: '^^asItems'
         },
         templateUrl: 'App/Items/itemsListView.html',
         controller: itemsListController,
@@ -38,6 +62,6 @@
     }
 
     angular.module('app')
-        .controller('itemsListController', [itemsListController])
-        .component('slItemsList', slitemsList);
+        .controller('itemsListController', ['itemsService', 'sortingService', itemsListController])
+        .component('asItemsList', asItemsList);
 })();

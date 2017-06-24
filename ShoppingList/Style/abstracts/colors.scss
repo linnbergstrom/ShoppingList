@@ -1,13 +1,18 @@
 ﻿//colors
+
 $gray-dark: #4e4e4e;
 $gray: #656565;
-$gray-light: #969696;
+$gray-light: #cecece;
 $gray-lighter: #eceeef;
 $gray-lightest: #f7f7f7;
 
-$theme-color: #ffff9e;
-$theme-color-light: #ffffbe; //#ffffa7;
-$theme-color-intense: #feff49;
+$yellow-color: #fefea3;
+$yellow-color-light: #ffffbe; //#ffffa7;
+$yellow-color-intense: #feff49;
+
+$theme-color: $gray-lighter;
+$theme-color-light: $gray-lightest;
+$theme-color-intense: $gray-light;
 
 $background-color: $theme-color-light;
 $border-color-base: $gray-light;

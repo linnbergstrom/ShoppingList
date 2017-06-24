@@ -1,18 +1,25 @@
 ﻿/// <reference path="../abstracts/typography" />
 /// <reference path="../abstracts/colors" />
+/// <reference path="../abstracts/variables" />
 
 .toolbar {
     position: relative;
     background-color: $theme-color;
-    padding: .5rem;
-    margin-right: -15px;
-    margin-left: -15px;
-    margin-bottom: 15px;
+    padding: 0 15px;
+    background: linear-gradient(to bottom right, $theme-color, $theme-color-light);
+
+    .toolbar-title {
+        display: inline-block;
+        font-size: 1.5em;
+        padding-left: 0.5em;
+        padding-top: 0.5em;
+    }
 
     .toolbar-items {
         display: flex;
         width: 100%;
-            flex-wrap:wrap;
+        flex-wrap: wrap;
+        padding: 0.5em;
     }
 
     .toolbar-group {
@@ -27,7 +34,7 @@
     .action-button {
         background-color: $theme-color-intense;
         border-left: 0;
-        text-decoration:none;
+        text-decoration: none;
         color: rgba(0,0,0,.9);
         cursor: pointer;
         display: block;
@@ -52,3 +59,6 @@
     font-size: 1rem;
     padding: .5rem;
 }
+
+/*@media ( mmax-width:$breakpoint-max-md) {
+}*/

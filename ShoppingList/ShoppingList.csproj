@@ -157,11 +157,14 @@
     <Compile Include="Services\ItemsService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\Items\sortingService.js" />
+    <Content Include="App\Items\toolbarComponent.js" />
     <Content Include="App\Items\itemsListComponent.js" />
     <Content Include="App\Items\itemsComponent.js" />
     <Content Include="App\Items\itemsService.js" />
     <Content Include="App\Items\itemsListView.html" />
     <Content Include="App\Items\itemsView.html" />
+    <Content Include="App\Items\toolbarView.html" />
     <Content Include="App\main.js" />
     <Content Include="App\route.js" />
     <Content Include="Data\ShoppingModel.Context.tt">
@@ -176,13 +179,6 @@
     </Content>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\angular-mocks.js" />
-    <Content Include="Scripts\angular-route.js" />
-    <Content Include="Scripts\angular-route.min.js" />
-    <Content Include="Scripts\angular.js" />
-    <Content Include="Scripts\angular.min.js" />
-    <Content Include="Scripts\angular.min.js.map" />
-    <Content Include="Scripts\angular-route.min.js.map" />
     <EntityDeploy Include="Data\ShoppingModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ShoppingModel.Designer.cs</LastGenOutput>
@@ -195,16 +191,6 @@
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
-    <None Include="Scripts\jquery-3.1.1.intellisense.js" />
-    <Content Include="Scripts\jquery-3.1.1.js" />
-    <Content Include="Scripts\jquery-3.1.1.min.js" />
-    <Content Include="Scripts\jquery-3.1.1.slim.js" />
-    <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
-    <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Scripts\respond.js" />
-    <Content Include="Scripts\respond.matchmedia.addListener.js" />
-    <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
-    <Content Include="Scripts\respond.min.js" />
     <Content Include="Style\main.css">
       <DependentUpon>main.scss</DependentUpon>
     </Content>
@@ -240,12 +226,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Scripts\jquery-3.1.1.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
