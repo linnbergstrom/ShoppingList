@@ -217,6 +217,7 @@
     <Content Include="Style\components\table.scss" />
     <Content Include="Style\components\list.scss" />
     <Content Include="Style\abstracts\variables.scss" />
+    <Content Include="Style\components\animations.scss" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

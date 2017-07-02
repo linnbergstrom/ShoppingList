@@ -1,0 +1,15 @@
+﻿/// <reference path="../abstracts/variables" />
+/*@media(max-width:$breakpoint-max-md ) {
+    .animate-slide {
+        transition: .4s ease all;
+        height: 40px;
+
+        &.ng-hide {
+            height: 0;
+        }
+
+        &.ng-hide-add, &.ng-hide-remove {
+            opacity: 0;
+        }
+    }
+}*/

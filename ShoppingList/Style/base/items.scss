@@ -19,8 +19,7 @@ body {
 .container {
     padding-right: 15px;
     padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
+    max-width: 1075px;
 }
 
 .container:before, .row:before {
@@ -34,7 +33,6 @@ body {
     margin-right: -15px;
     margin-left: -15px;
 }
-
 
 @media (max-width: $breakpoint-max-md) {
     .needed-items, .available-items {

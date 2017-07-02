@@ -3,7 +3,16 @@
 
     function toolbarController(sortingService) {
         var vm = this;
-        vm.showSort = false;
+        vm.showSort;
+        vm.$onInit = function () {
+            vm.showSort = JSON.parse(localStorage.getItem('listMenuExpanded'));
+
+        };
+
+        vm.toggleSortMenu = function () {
+            vm.showSort = !vm.showSort;
+            localStorage.setItem('listMenuExpanded', vm.showSort);
+        }
 
         vm.add = function (item) {
             var index = vm.items.length + 2;
@@ -12,10 +21,6 @@
 
         vm.sortOn = function (field) {
             vm.sorting = sortingService.sortOn(field);
-        };
-
-        vm.toggleSort = function () {
-            vm.showSort = !vm.showSort;
         };
     };
 

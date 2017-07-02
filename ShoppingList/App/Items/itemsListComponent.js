@@ -23,10 +23,19 @@
             if (vm.allSelected) {
                 vm.selectedItems = [];
                 vm.allSelected = false;
+                selectSwitcher(vm.items);
             } else {
                 vm.allSelected = true;
+                vm.selectedItems = selectSwitcher(vm.items);
             }
-            vm.selectedItems = vm.items.map(function (item) {
+            //vm.selectedItems = vm.items.map(function (item) {
+            //    item.selected = vm.allSelected;
+            //    return item;
+            //});
+        };
+
+        function selectSwitcher(items) {
+            return items.map(function (item) {
                 item.selected = vm.allSelected;
                 return item;
             });
