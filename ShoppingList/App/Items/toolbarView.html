@@ -1,5 +1,5 @@
 ﻿<div class="toolbar-container">
-    <div class="toolbar">
+    <div class="toolbar" ng-class="{'toolbar-expanded' : vm.showSort, 'toolbar-large-expanded' : vm.selectedItems.length === 1, 'toolbar-collapsed' : vm.selectedItems.length > 1}">
         <div class="toolbar-title">
             <span>{{vm.header}}</span>
         </div>
@@ -7,44 +7,46 @@
             <form class="toolbar-form" ng-show="vm.selectedItems.length === 1">
                 <div class="input-group">
                     <input placeholder="Edit selected item" class="form-text" id="editSelected" type="text" ng-model="vm.selectedItems[0].title" />
-                    <button class="btn" type="submit">Edit</button>
+                    <button class="btn" type="submit" ng-disabled="vm.updating">Edit</button>
                 </div>
             </form>
-            <form class="toolbar-form" ng-show="vm.selectedItems.length < 1" ng-submit="vm.add()">
+            <form name="vm.editForm" class="toolbar-form" ng-hide="vm.selectedItems.length === 1" ng-submit="vm.add()">
                 <div class="input-group">
                     <input placeholder="Add new item" class="form-text" id="editSelected" type="text" ng-model="vm.newItemName" />
-                    <button class="btn" type="submit"><span><i class="fa fa-plus"></i></span></button>
+                    <button ng-disabled="vm.editForm.$pristine" ng-class="{'glowy-button' : !vm.editForm.$pristine && vm.editForm.$valid}" class="btn" type="submit">
+                        <span><i class="ms-Icon ms-Icon--Add"></i></span>
+                    </button>
                 </div>
             </form>
-            <ul class="toolbar-group animate-slide" ng-show="vm.selectedItems.length > 0">
+            <ul class="toolbar-group animate-slide" ng-show="vm.selectedItems.length > 0 && vm.showSort || vm.selectedItems.length > 1">
                 <li>
-                    <a ng-click="vm.toggle()" class="action-button">
+                    <a ng-click="vm.confirmItem()" class="action-button">
                         <span ng-if="vm.selectedItems[0].needed">Finish Selected</span>
                         <span ng-if="!vm.selectedItems[0].needed">Done</span>
                     </a>
                 </li>
-                <li ng-if="!vm.selectedItems[0].needed">
-                    <a ng-click="deleteItems()" class="action-button">Delete</a>
+                <li>
+                    <button ng-click="vm.deleteItems()" class="action-button">Delete</button>
                 </li>
                 <li>
                 </li>
             </ul>
             <ul class="toolbar-group aligned-right">
                 <li>
-                    <button class="btn action-button toolbar-toggler" ng-click="vm.toggleSortMenu()">
+                    <button class="btn action-button toolbar-toggler" ng-click="vm.toggleSortMenu()" ng-class="{'glowy-button' : vm.selectedItems.length === 1 && !vm.showSort}">
                         <span><i class="fa fa-expand"></i></span>
                     </button>
                 </li>
                 <li>
-                    <button ng-click="vm.itemsController.switchView()" class="action-button">
-                        <i class="fa" ng-class="{'fa-bookmark': vm.initialView, 'fa-arrow-left': !vm.initialView,}"></i>
+                    <button ng-click="vm.itemsController.switchView()" class="btn action-button">
+                        <i ng-class="{'ms-Icon ms-Icon--SingleBookmark': vm.showAvailable, 'ms-Icon ms-Icon--Back': !vm.showAvailable}"></i>
                     </button>
                 </li>
             </ul>
         </div>
         <div class="sorting-menu animate-slide" ng-show="vm.showSort">
             <div class="btn column custom-control item-checkbox" ng-click="vm.selectAll()" ng-class="{'sorted-property': vm.allSelected}">
-                <span><i class="fa fa-check"></i></span>
+                <span><i class="ms-Icon ms-Icon--Accept"></i></span>
             </div>
             <div class="sorting-menu-sort" ng-class="{'descending' : vm.sorting.sortedDesc, 'ascending' : !vm.sorting.sortedDesc}">
                 <div class="header-frequency sortable btn" ng-click="vm.sortOn('frequency')" ng-class="{'sorted-property' : vm.sorting.sortedOn==='frequency'}">

@@ -7,10 +7,9 @@
     <div class="item list-row-container" ng-click="vm.setSelected(item)" ng-repeat="item in vm.items | orderBy:vm.sorting.sortedOn:vm.sorting.sortedDesc" ng-class="{'selected': item.selected}">
         <div class="item list-row">
             <div class="column custom-control item-checkbox">
-                <label for="{{item.id}}">
-                    <i class="fa fa-circle-o" ng-show="!item.selected"></i>
-                    <i class="fa fa-check" ng-show="item.selected"></i>
-                </label>
+                <!--<label for="{{item.id}}">
+                    <i class="ms-Icon ms-Icon--SkypeCircleCheck" ng-show="item.selected"></i>
+                </label>-->
             </div>
 
             <div class="column item-frequency">
@@ -20,16 +19,15 @@
             <div class="wrapper item-info flex-grow">
                 <div class="item-name">
                     <span>{{ item.title }}</span>
-                    <i class="fa fa-exclamation"></i>
                 </div>
                 <div class="wrapper item-updated">
                     <div class="no-wrap">{{ item.lastUpdated  | date:'dd MMM'}}</div>
                 </div>
             </div>
             <div class="item-action">
-                <button class="btn btn-green" ng-click="vm.toggle(item)">
-                    <span ng-if="item.needed">Complete</span>
-                    <span ng-if="!item.needed">Need</span>
+                <button class="btn btn-green" ng-click="vm.confirmItem(item)">
+                    <span ng-if="item.needed"><i class="ms-Icon ms-Icon--Accept"></i></span>
+                    <span ng-if="!item.needed"><i class="ms-Icon ms-Icon--Add"></i></span>
                 </button>
             </div>
         </div>

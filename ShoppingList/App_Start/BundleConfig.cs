@@ -22,10 +22,11 @@ namespace ShoppingList
                       "~/node_modules/angular-animate/angular-animate.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/app").IncludeDirectory(
-          "~/App", "*.js", true));
+                        "~/App", "*.js", true));
 
-            bundles.Add(new StyleBundle("~/fontawesome").Include(
-          "~/node_modules/font-awesome/css/font-awesome.css"));
+            bundles.Add(new StyleBundle("~/ui-fabric").Include(
+                        "~/node_modules/office-ui-fabric-core/dist/css/fabric.css",
+                        "~/node_modules/font-awesome/css/font-awesome.css"));
 
             bundles.Add(new StyleBundle("~/Style/css").Include(
                       "~/Style/main.css"));

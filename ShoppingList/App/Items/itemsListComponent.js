@@ -41,7 +41,7 @@
             });
         };
 
-        vm.toggle = function (item) {
+        vm.confirmItem = function (item) {
             if (item.needed) {
                 item.frequency++;
             }

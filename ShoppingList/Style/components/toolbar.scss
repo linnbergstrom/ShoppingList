@@ -4,27 +4,39 @@
 @import 'animations';
 
 .toolbar-container {
-    background-color: $theme-color;
+    min-width: 400px;
 }
 
 .toolbar {
     position: relative;
-    padding: 10px 15px;
+    padding: 5px;
     max-width: 750px;
-    /*background: linear-gradient(to bottom right, $theme-color, $theme-color-light);*/
+    height: 86px;
+
+    &.toolbar-collapsed {
+        /*height: 50px;*/
+    }
+
+    &.toolbar-expanded {
+        height: 130px;
+
+        &.toolbar-large-expanded {
+            height: 175px;
+        }
+    }
+
     .toolbar-title {
         display: inline-block;
         font-size: 15px;
-        padding-bottom: 4px;
-        font-weight: bold;
+        font-weight: 600;
         padding-left: 2px;
     }
 
     .toolbar-items {
         display: flex;
         width: 100%;
-        flex-wrap: wrap;
-        position: relative;
+        margin-top: 5px;
+        flex-direction: column;
     }
 
     .toolbar-group {
@@ -34,7 +46,8 @@
         margin-right: auto;
         list-style: none;
         padding-left: 0;
-        margin-left: 8px;
+        margin-top: 5px;
+        margin-left: 0;
 
         li {
             margin-right: 10px;
@@ -46,8 +59,8 @@
 
         &.aligned-right {
             position: absolute;
-            right: 0;
-            top: 0;
+            right: 5px;
+            top: 5px;
             margin: 0;
         }
     }
@@ -65,7 +78,8 @@
         border: 1px solid $border-color-base;
     }
 
-    .toolbar-form {
+    .glowy-button {
+        background-color: $theme-color-intense;
     }
 }
 
@@ -77,10 +91,10 @@
 }
 
 .sorting-menu {
-    font-weight: bold;
+    font-weight: 600;
     display: flex;
     flex-direction: row;
-    margin-top: 5px;
+    margin-top: 4px;
 
     .btn {
         background-color: #fff;
@@ -106,46 +120,39 @@
     margin-left: 2px;
 }
 
-@media ( max-width:$breakpoint-max-md) {
-    .toolbar .toolbar-items {
-        flex-direction: column;
+/*@media (min-width: $breakpoint-min-md) {
+    .toolbar-container {
+        min-width: initial;
     }
 
-    .toolbar .toolbar-group {
-        margin-top: 10px;
-        margin-left: 0;
-    }
-}
+    .toolbar {
+        height: auto !important;
 
-@media (min-width: $breakpoint-min-md) {
-    .toolbar .toolbar-group {
+        .toolbar-items {
+            flex-direction: column;
+        }
 
-        &.aligned-right {
-            position: static;
-            order: 1;
-            margin-bottom: 10px;
+        .toolbar-group {
+            &.aligned-right {
+                position: static;
+                order: 1;
+                margin-bottom: 5px;
+            }
         }
     }
 
     .toolbar-form {
         order: 2;
     }
+
     .list-row-container {
         margin: 4px;
-     background-color: $theme-color;;
+        background-color: $theme-color;
+        ;
     }
-}
+}*/
 
 @media ( max-width:$breakpoint-max-sm) {
-    .toolbar {
-        padding: 5px;
-    }
-
-    .toolbar-items {
-        position: static;
-        margin-top: 5px;
-    }
-
     .toolbar .toolbar-title {
         padding: 0;
     }

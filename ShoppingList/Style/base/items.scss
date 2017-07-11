@@ -6,20 +6,27 @@
     box-sizing: border-box;
 }
 
+html, body {
+    height: 100%;
+}
+
 body {
     margin: 0;
     padding: 0;
     font-size: 16px;
     line-height: 1.5rem;
-    font-family: Arial;
     color: $gray-dark;
     background-color: $background-color;
+    font-family: "Segoe UI WestEuropean","Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",sans-serif;
 }
 
 .container {
     padding-right: 15px;
     padding-left: 15px;
-    max-width: 1075px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    max-width: 800px;
 }
 
 .container:before, .row:before {
@@ -32,6 +39,7 @@ body {
     flex-wrap: wrap;*/
     margin-right: -15px;
     margin-left: -15px;
+    padding: 5px 15px 50px 15px;
 }
 
 @media (max-width: $breakpoint-max-md) {

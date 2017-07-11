@@ -9,6 +9,13 @@
     text-align: center;
     white-space: nowrap;
     padding: .5em 1em;
+    background-color: #fff;
+    height: 40px;
+}
+
+.btn-green {
+    height: auto;
+    background-color: $theme-color-accent;
 }
 
 .input-group {
@@ -19,7 +26,6 @@
         border-left: 0;
         margin: 0;
         line-height: 1.25rem;
-        background-color: $theme-color-intense;
     }
 
     .input-group:last-child {

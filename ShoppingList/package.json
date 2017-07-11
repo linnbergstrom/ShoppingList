@@ -3,10 +3,10 @@
   "name": "asp.net",
   "private": true,
   "dependencies": {
-    "font-awesome": "~4.7.0",
     "angular": "^1.6.4",
     "angular-route": "^1.6.4",
     "angular-animate": "^1.6.4",
-    "jquery": "^3.2.1"
+    "office-ui-fabric-core": "^7.1.2",
+    "font-awesome": "^4.7.0"
   }
 }

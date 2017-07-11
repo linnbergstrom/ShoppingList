@@ -1,13 +1,13 @@
-﻿<div class="container">
-    <div class="row">
-        <div class="needed-items" ng-if="vm.initialView">
+﻿<div class="container" sl-resize="vm.onResize(width)">
+    <div class="row" ng-class="{'showing-available' : vm.showAvailable}">
+        <div class="needed-items" ng-if="!vm.showAvailable">
             <div class="items-container">
                 <as-items-list items="vm.neededItems" header="Needed Items"></as-items-list>
             </div>
         </div>
-        <div class="available-items" ng-if="!vm.initialView">
+        <div class="available-items" ng-if="vm.showAvailable">
             <div class="items-container">
-                <as-items-list items="vm.availableItems" header="Available Items"></as-items-list>
+                <as-items-list items="vm.availableItems" header="Available Items {{windowWith}}"></as-items-list>
             </div>
         </div>
     </div>

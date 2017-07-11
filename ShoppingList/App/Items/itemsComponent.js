@@ -15,8 +15,12 @@
             });
         };
 
+        vm.onResize = function (width) {
+            vm.wideScreen = width > 1200;
+        };
+
         vm.switchView = function () {
-            vm.initialView = !vm.initialView;
+            vm.showAvailable = !vm.showAvailable;
         };
 
         vm.sortItems = function () {

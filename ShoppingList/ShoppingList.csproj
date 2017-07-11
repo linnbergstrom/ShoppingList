@@ -166,12 +166,14 @@
     <Content Include="App\Items\itemsView.html" />
     <Content Include="App\Items\toolbarView.html" />
     <Content Include="App\main.js" />
+    <Content Include="App\resizeDirective.js" />
     <Content Include="App\route.js" />
     <Content Include="Data\ShoppingModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ShoppingModel.edmx</DependentUpon>
       <LastGenOutput>ShoppingModel.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="Data\ShoppingModel.edmx.sql" />
     <Content Include="Data\ShoppingModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ShoppingModel.edmx</DependentUpon>

@@ -6,13 +6,17 @@ $gray-light: #cecece;
 $gray-lighter: #eceeef;
 $gray-lightest: #f7f7f7;
 
-$yellow-color: #fefea3;
-$yellow-color-light: #ffffbe; //#ffffa7;
-$yellow-color-intense: #feff49;
+$yellow-base: #fefea3;
+$yellow-light: #fbffc2; //#ffffa7;
+$yellow-intense: #feff49;
+$green-base: #c2ffc7;
+$green-light: #dcffc2;
 
-$theme-color: $gray-lighter;
-$theme-color-light: $gray-lightest;
-$theme-color-intense: $gray-light;
+$theme-color: $yellow-base;
+$theme-color-light: $yellow-light;
+$theme-color-intense: $yellow-intense;
 
-$background-color: $theme-color-light;
+$theme-color-accent: $green-base;
+
+$background-color: $green-light;
 $border-color-base: $gray-light;
