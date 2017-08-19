@@ -24,7 +24,7 @@
         };
 
         vm.addItem = function (name) {
-            return itemsService.addNew(name).then(function (updatedItems) {
+            return itemsService.addNew(name).then(function () {
                 vm.getItems();
             });
         };

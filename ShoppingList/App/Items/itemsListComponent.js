@@ -10,14 +10,7 @@
             //$rootScope.$broadcast('selectedItemsUpdated', vm.selectedItems);
         };
 
-        vm.setSelected = function (item) {
-            //if (!item.selected) {
-            //    item.selected = true;
-            //    vm.selectedItems.push(item);
-            //} else {
-            //    item.selected = false;
-            //    vm.selectedItems.pop(item);
-            //}
+        vm.setSelected = function ($event, item) {
             item.selected = !item.selected;
             vm.allSelected = vm.items.length === vm.selectedItems.length;
             $rootScope.$broadcast('selectedItemsUpdated');
@@ -41,7 +34,7 @@
             });
         }
 
-        vm.confirmItem = function (item) {
+        vm.confirmItem = function ($event, item) {
             if (item.needed) {
                 item.frequency++;
             }
@@ -49,6 +42,7 @@
             itemsService.updateItem(item).then(function () {
                 vm.itemsController.getItems();
             });
+            $event.stopPropagation();
         };
 
         vm.delete = function () {

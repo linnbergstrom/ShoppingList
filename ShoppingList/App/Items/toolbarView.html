@@ -30,7 +30,7 @@
             </div>
             <ul class="toolbar-group animate-slide" ng-show="vm.selectedItems.length > 0">
                 <li ng-if="vm.selectedItems[1].needed">
-                    <a ng-click="vm.confirmItem()" class="action-button">
+                    <a ng-click="vm.confirmItem(item)" class="action-button">
                         <span>Finish Selected</span>
                     </a>
                 </li>
