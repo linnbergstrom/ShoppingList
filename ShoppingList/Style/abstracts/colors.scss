@@ -1,6 +1,6 @@
 ﻿//colors
 
-$gray-dark: #4e4e4e;
+$gray-dark: #333333;
 $gray: #656565;
 $gray-light: #cecece;
 $gray-lighter: #eceeef;
@@ -11,12 +11,21 @@ $yellow-light: #fbffc2; //#ffffa7;
 $yellow-intense: #feff49;
 $green-base: #c2ffc7;
 $green-light: #dcffc2;
+$green-lighter: #f9fff3;
+
+$blue-color: #c2dcff;
+$blue-color-light: #e7f1ff;
+$blue-color-lightest: #f2f7ff;
 
 $theme-color: $yellow-base;
 $theme-color-light: $yellow-light;
 $theme-color-intense: $yellow-intense;
 
-$theme-color-accent: $green-base;
+$accent-color-light: $green-lighter;
+$accent-color: $green-base;
 
+$triadic-color: $blue-color;
+$triadic-color-light: $blue-color-light;
+$triadic-color-lightest: $blue-color-lightest;
 $background-color: $green-light;
-$border-color-base: $gray-light;
+$border-color-base: $gray;

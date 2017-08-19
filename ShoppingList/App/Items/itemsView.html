@@ -1,14 +1,12 @@
 ﻿<div class="container" sl-resize="vm.onResize(width)">
-    <div class="row" ng-class="{'showing-available' : vm.showAvailable}">
-        <div class="needed-items" ng-if="!vm.showAvailable">
-            <div class="items-container">
-                <as-items-list items="vm.neededItems" header="Needed Items"></as-items-list>
-            </div>
-        </div>
-        <div class="available-items" ng-if="vm.showAvailable">
-            <div class="items-container">
-                <as-items-list items="vm.availableItems" header="Available Items {{windowWith}}"></as-items-list>
-            </div>
+    <div class="row" ng-class="{'showing-available' : vm.showAvailable, 'showing-needed' : !vm.showAvailable}">
+        <as-toolbar show-available="vm.showAvailable"
+                    select-all="vm.selectAll()"
+                    items="vm.items"
+                    sorting="vm.sorting"></as-toolbar>
+
+        <div class="items-container">
+            <as-items-list ng-class="{'available-items' : vm.showAvailable, 'needed-items': !vm.showAvailable}" class="" items="vm.items" selected-items="vm.selectedItems"></as-items-list>
         </div>
     </div>
 </div>

@@ -1,9 +1,4 @@
-﻿<as-toolbar all-selected="vm.allSelected"
-            header="vm.header"
-            select-all="vm.selectAll()"
-            selected-items="vm.selectedItems"
-            sorting="vm.sorting"></as-toolbar>
-<div class="list-container">
+﻿<div class="list-container">
     <div class="item list-row-container" ng-click="vm.setSelected(item)" ng-repeat="item in vm.items | orderBy:vm.sorting.sortedOn:vm.sorting.sortedDesc" ng-class="{'selected': item.selected}">
         <div class="item list-row">
             <div class="column custom-control item-checkbox">
@@ -25,7 +20,7 @@
                 </div>
             </div>
             <div class="item-action">
-                <button class="btn btn-green" ng-click="vm.confirmItem(item)">
+                <button class="btn primary-button" ng-click="vm.confirmItem(item)">
                     <span ng-if="item.needed"><i class="ms-Icon ms-Icon--Accept"></i></span>
                     <span ng-if="!item.needed"><i class="ms-Icon ms-Icon--Add"></i></span>
                 </button>

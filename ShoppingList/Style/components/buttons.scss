@@ -13,14 +13,19 @@
     height: 40px;
 }
 
-.btn-green {
+.primary-button {
     height: auto;
-    background-color: $theme-color-accent;
+    background-color: $accent-color;
+}
+.available-items {
+    .primary-button {
+        background-color: $triadic-color;
+    }
 }
 
 .input-group {
     position: relative;
-    display: flex;
+    display: inline-flex;
 
     .btn {
         border-left: 0;

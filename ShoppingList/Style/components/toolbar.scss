@@ -11,17 +11,18 @@
     position: relative;
     padding: 5px;
     max-width: 750px;
-    height: 86px;
-
+    /*height: 86px;*/
     &.toolbar-collapsed {
         /*height: 50px;*/
     }
 
     &.toolbar-expanded {
-        height: 130px;
-
+        /*height: 130px;*/
         &.toolbar-large-expanded {
-            height: 175px;
+            /*height: 175px;*/
+            .toolbar-group {
+                /*margin-top: 5px;*/
+            }
         }
     }
 
@@ -36,7 +37,32 @@
         display: flex;
         width: 100%;
         margin-top: 5px;
-        flex-direction: column;
+        flex-direction: row;
+        position: relative;
+        height: 46px;
+
+        .validation-tooltip {
+            position: absolute;
+            background-color: pink;
+            right: 0;
+            left: 0;
+            top: -38px;
+            padding: 3px;
+            display: inline-block;
+
+            &::before, &.after {
+                content: '';
+                position: absolute;
+                top: 100%;
+                left: 6px;
+                border: solid transparent;
+            }
+
+            &::before {
+                border-top-color: pink;
+                border-width: 8px;
+            }
+        }
     }
 
     .toolbar-group {
@@ -46,8 +72,7 @@
         margin-right: auto;
         list-style: none;
         padding-left: 0;
-        margin-top: 5px;
-        margin-left: 0;
+        margin-left: 10px;
 
         li {
             margin-right: 10px;
@@ -60,7 +85,7 @@
         &.aligned-right {
             position: absolute;
             right: 5px;
-            top: 5px;
+            top: 0;
             margin: 0;
         }
     }
@@ -76,11 +101,20 @@
         margin-left: 0;
         padding: .5em 1em;
         border: 1px solid $border-color-base;
+        height: 40px;
     }
 
     .glowy-button {
         background-color: $theme-color-intense;
     }
+}
+
+.needed-items-title, .available-items-title {
+    display: none;
+}
+
+.showing-needed .needed-items-title, .showing-available .available-items-title {
+    display: inline;
 }
 
 .form-text {
@@ -90,11 +124,24 @@
     padding: .5rem;
 }
 
+.animate-slide {
+    transition: .35s ease-in-out;
+}
+
 .sorting-menu {
     font-weight: 600;
     display: flex;
     flex-direction: row;
     margin-top: 4px;
+    height: 0;
+    overflow: hidden;
+    transition: .35s ease-in-out;
+
+
+    &.toggled {
+        height: 45px;
+        transition: .35s ease-in-out;
+    }
 
     .btn {
         background-color: #fff;
@@ -119,7 +166,6 @@
     flex-grow: 1;
     margin-left: 2px;
 }
-
 /*@media (min-width: $breakpoint-min-md) {
     .toolbar-container {
         min-width: initial;
@@ -151,7 +197,6 @@
         ;
     }
 }*/
-
 @media ( max-width:$breakpoint-max-sm) {
     .toolbar .toolbar-title {
         padding: 0;

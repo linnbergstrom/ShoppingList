@@ -1,4 +1,5 @@
 ﻿using ShoppingList.Data;
+using ShoppingList.Models;
 using System.Collections.Generic;
 using System.Web.Http;
 
@@ -7,14 +8,14 @@ namespace ShoppingList.Controllers
     public class ItemsController : ApiController
     {
         // GET api/items
-        public IEnumerable<Item> Get()
+        public ItemsDTO Get()
         {
             return ItemsService.GetAll();
         }
 
         // POST api/items
         //        [Route("api/items/{name}")]
-        public IEnumerable<Item> Post([FromBody]Item item)
+        public ItemsDTO Post([FromBody]Item item)
         {
             ItemsService.addNew(item);
             return ItemsService.GetAll();
@@ -27,8 +28,10 @@ namespace ShoppingList.Controllers
         }
 
         // DELETE api/items/5
-        public void Delete(int id)
+        [Route("api/items/delete")]
+        public void Post(IEnumerable<int> items)
         {
+            ItemsService.DeleteItems(items);
         }
     }
 }

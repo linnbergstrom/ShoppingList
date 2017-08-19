@@ -153,10 +153,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ItemsDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ItemsService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\Util\itemExistsDirective.js" />
     <Content Include="App\Items\sortingService.js" />
     <Content Include="App\Items\toolbarComponent.js" />
     <Content Include="App\Items\itemsListComponent.js" />
@@ -166,7 +168,7 @@
     <Content Include="App\Items\itemsView.html" />
     <Content Include="App\Items\toolbarView.html" />
     <Content Include="App\main.js" />
-    <Content Include="App\resizeDirective.js" />
+    <Content Include="App\Util\resizeDirective.js" />
     <Content Include="App\route.js" />
     <Content Include="Data\ShoppingModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -223,7 +225,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
     <Folder Include="Style\layout\" />
     <Folder Include="Style\themes\" />
   </ItemGroup>

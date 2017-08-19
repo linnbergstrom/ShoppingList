@@ -1,17 +1,31 @@
 ﻿(function () {
     'use strict';
 
-    function itemsController(itemsService, $location) {
+    function itemsController(itemsService, sortingService, $location) {
         var vm = this;
 
         vm.$onInit = function () {
-            vm.items = [];
+            vm.selectedItems = [];
+            vm.sorting = sortingService.sorting();
 
+            vm.getItems();
+        };
+
+        vm.getItems = function () {
             itemsService.getAll().then(function (items) {
-                vm.items = items;
-                vm.sortItems();
+                if (vm.showAvailable) {
+                    vm.items = items.available;
+                } else {
+                    vm.items = items.needed;
+                }
             }).catch(function (error) {
-                console.log(error)
+                console.log(error);
+            });
+        };
+
+        vm.addItem = function (name) {
+            return itemsService.addNew(name).then(function (updatedItems) {
+                vm.getItems();
             });
         };
 
@@ -20,32 +34,29 @@
         };
 
         vm.switchView = function () {
+            vm.selectedItems = [];
             vm.showAvailable = !vm.showAvailable;
+            vm.getItems();
         };
 
-        vm.sortItems = function () {
-            vm.neededItems = [];
-            vm.availableItems = [];
-
-            vm.items.forEach(function (item) {
-                vm.items.selected = false;
-                if (item.needed) {
-                    vm.neededItems.push(item);
-                } else {
-                    vm.availableItems.push(item);
-                }
-                item.needed;
+        vm.deleteItems = function (selected) {
+            itemsService.deleteItems(itemIds(selected.items)).then(function () {
+                vm.getItems();
             });
         };
-    };
+
+        function itemIds(items) {
+            return items.map((item) => { return item.id; });
+        }
+    }
 
     var asItems = {
         templateUrl: 'App/Items/itemsView.html',
         controller: itemsController,
-        controllerAs: 'vm',
+        controllerAs: 'vm'
     };
 
     angular.module('app')
-        .controller('itemsController', ['itemsService', '$location', itemsController])
+        .controller('itemsController', ['itemsService', 'sortingService', '$location', itemsController])
         .component('asItems', asItems);
 })();

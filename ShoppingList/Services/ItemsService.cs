@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using ShoppingList.Data;
 using System.Data.Entity;
+using ShoppingList.Models;
 
 namespace ShoppingList
 {
@@ -11,17 +12,36 @@ namespace ShoppingList
     {
         // private static ShoppingListEntities db => new ShoppingListEntities();
 
-        internal static IEnumerable<Item> GetAll()
+        internal static ItemsDTO GetAll()
         {
             using (var db = new ShoppingListEntities())
             {
-                return db.Items.ToList();
+                var needed = db.Items.Where(i => i.Needed).ToList();
+                var available = db.Items.Where(i => !i.Needed).ToList();
+                var itemDTO = new ItemsDTO
+                {
+                    Available = available,
+                    Needed = needed
+                };
+                return itemDTO;
+            }
+        }
+
+        internal static void DeleteItems(IEnumerable<int> ids)
+        {
+            using (var db = new ShoppingListEntities())
+            {
+                foreach (var id in ids)
+                {
+                    var item = db.Items.First(i => i.Id == id);
+                    db.Items.Remove(item);
+                }
+                db.SaveChanges();
             }
         }
 
         internal static void UpdateItem(Item item)
         {
-
             using (var db = new ShoppingListEntities())
             {
                 db.Entry(item).State = EntityState.Modified;
