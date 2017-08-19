@@ -13,7 +13,16 @@
                     if (!modelValue) {
                         return $q.resolve();
                     }
-                    return itemsService.itemUnique(modelValue);
+                    return itemsService.getAll().then(function (items) {
+                        var names = items.needed.map(n => n.title.toLowerCase());
+                        var exists = names.find(function (name) {
+                            return modelValue.toLowerCase() === name;
+                        });
+                        if (exists) {
+                            return $q.reject();
+                        }
+                        return $q.resolve();
+                    });
                 }
             };
         }]);

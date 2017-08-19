@@ -9,7 +9,6 @@
 
         return {
             addNew: addNew,
-            itemUnique: itemUnique,
             deleteItems: deleteItems,
             getAll: getAll,
             refreshItems: refreshItems,
@@ -32,22 +31,6 @@
             });
         }
 
-        function itemUnique(input) {
-            return getAll().then(function (items) {
-                if (!input) {
-                    return false;
-                }
-                var names = items.needed.map(n => n.title.toLowerCase());
-                var exists = names.find(function (name) {
-                    return input.toLowerCase() === name;
-                });
-                if (exists) {
-                    return false;
-                }
-                return true;
-            });
-        };
-
         function getAll() {
             if (cachedItems) {
                 return $q.resolve(cachedItems);
@@ -60,10 +43,6 @@
             return $http.post("/api/items/delete", items).then(function () {
                 return getAll();
             });
-            //cachedItems.available = cachedItems.available.filter(item => !items.includes(item));
-            //cachedItems.needed = cachedItems.needed.filter(item => !items.includes(item));
-            //return cachedItems;
-            //  }
         }
         function refreshItems() {
             return $http.get('/api/items').then(function (response) {

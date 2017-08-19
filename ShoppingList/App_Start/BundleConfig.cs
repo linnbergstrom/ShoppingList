@@ -19,6 +19,7 @@ namespace ShoppingList
             bundles.Add(new ScriptBundle("~/bundles/angularjs").Include(
                       "~/node_modules/angular/angular.js",
                       "~/node_modules/angular-route/angular-route.js",
+                      "~/node_modules/angular-messages/angular-messages.js",
                       "~/node_modules/angular-animate/angular-animate.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/app").IncludeDirectory(

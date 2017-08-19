@@ -2,9 +2,6 @@
     <div class="item list-row-container" ng-click="vm.setSelected($event, item)" ng-repeat="item in vm.items | orderBy:vm.sorting.sortedOn:vm.sorting.sortedDesc" ng-class="{'selected': item.selected}">
         <div class="item list-row">
             <div class="column custom-control item-checkbox">
-                <!--<label for="{{item.id}}">
-                    <i class="ms-Icon ms-Icon--SkypeCircleCheck" ng-show="item.selected"></i>
-                </label>-->
             </div>
 
             <div class="column item-frequency">

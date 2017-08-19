@@ -14,17 +14,19 @@
                     </div>
                 </form>
 
-                <form name="vm.addForm" class="toolbar-form" ng-show="vm.selectedItems.length === 0" ng-submit="vm.add()">
+                <form name="addForm" class="toolbar-form" ng-show="vm.selectedItems.length === 0" ng-submit="vm.add()">
                     <div class="input-group">
-                        <input required is-item-exists placeholder="Add new item" name="itemname" class="form-text" id="editSelected" type="text" ng-model="vm.newItemName" />
-                        <button ng-disabled="vm.addForm.$pristine" ng-class="{'glowy-button' : !vm.addForm.$pristine && vm.addForm.$valid}" class="btn" type="submit">
+                        <input name="itemname" minlength="2" is-item-exists placeholder="Add new item"
+                               class="form-text" id="editSelected" type="text" ng-model="vm.newItemName" />
+                        <button ng-disabled="addForm.$pristine && addForm.itemname.$pending" ng-class="{'glowy-button' : !addForm.$pristine && addForm.$valid}" class="btn" type="submit">
                             <span><i class="ms-Icon ms-Icon--Add"></i></span>
                         </button>
-                        <ng-messages for="vm.addForm.itemname.$error">
-
-                            <!--  <ng-message ng-show="vm.addForm.itemname.$error.required"> required</ng-message>-->
-                            <ng-message ng-show="vm.addForm.itemname.$error.unique" class="validation-tooltip">{{vm.newItemName}} is already in your list</ng-message>
-                        </ng-messages>
+                        <div ng-messages="addForm.itemname.$error"
+                            <div>
+                                <div class="validation-tooltip" ng-message="minlength">too short name</div>
+                                <div class="validation-tooltip" ng-message="unique">{{addForm.itemname.$viewValue}} is already in your list</div>
+                            </div>
+                        </div>
                     </div>
                 </form>
             </div>
