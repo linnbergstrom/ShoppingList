@@ -190,6 +190,7 @@
     <Content Include="Data\ShoppingModel.edmx.diagram">
       <DependentUpon>ShoppingModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Images\pexels-photo-403571.jpeg" />
     <Content Include="package.json" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">

@@ -18,6 +18,10 @@ body {
     color: $gray-dark;
     background-color: $background-color;
     font-family: "Segoe UI WestEuropean","Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",sans-serif;
+    /*https://static.pexels.com/photos/403571/pexels-photo-403571.jpeg*/
+    background-image: url('../../Images/pexels-photo-403571.jpeg');
+    background-position: right;
+    background-size: cover;
 }
 
 .container {

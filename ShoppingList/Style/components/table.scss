@@ -13,15 +13,6 @@
     }
 }
 
-tr {
-    /*&:nth-of-type(odd):not(:first-of-type) {
-        background-color: $theme-color;
-    }
-
-    &:nth-of-type(even) {
-        background-color: $theme-color-light;
-    }*/
-}
 
 th, td {
     overflow: hidden;
@@ -47,10 +38,6 @@ th.button-cell {
     width: 66px;
 }
 
-th.sortable:hover {
-    cursor: pointer;
-    color: #bb0000;
-}
 
 .center-text {
     text-align: center;

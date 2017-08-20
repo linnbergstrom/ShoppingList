@@ -7,7 +7,6 @@
         vm.sortedDesc = true;
         vm.$onInit = function () {
             vm.selectedItems = [];
-            //$rootScope.$broadcast('selectedItemsUpdated', vm.selectedItems);
         };
 
         vm.setSelected = function ($event, item) {

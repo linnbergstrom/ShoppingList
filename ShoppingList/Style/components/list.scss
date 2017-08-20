@@ -19,12 +19,11 @@ as-items-list {
 }
 
 .list-row-container {
-    background-color: #fff;
+    background-color: rgba(#fff, .5);
     border: 1px solid $border-color-base;
     border-collapse: collapse;
     margin-bottom: 2px;
-    border-radius: 6px;
-    /*box-shadow: inset 0px 0px 6px 0px rgba(197, 197, 19);*/
+    border-radius: 2px;
 
     &.selected {
         background-color: $theme-color-light;
@@ -34,7 +33,7 @@ as-items-list {
     background-color: #fff;
 
     &.selected {
-        background-color: $triadic-color-light;
+        background-color: rgba($triadic-color, .5);
     }
 }
 
@@ -77,11 +76,13 @@ as-items-list {
     justify-content: flex-start;
 
     .frame {
-        background-color: $accent-color-light;
-        width: 30px;
-        height: 50px;
+        width: 32px;
+        height: 32px;
         text-align: center;
-        line-height:50px;
+        line-height: 28px;
+        cursor: pointer;
+        border-radius: 50%;
+        border: 1px solid rgba(#21401f, .5);
         cursor: pointer;
     }
 }

@@ -22,9 +22,6 @@
         };
 
         vm.add = function () {
-            if (vm.newItemName === '' || !itemsService.itemUnique(vm.newItemName)) {
-                return;
-            }
             vm.updating = true;
             vm.itemsController.addItem(vm.newItemName).then(function () {
                 vm.newItemName = '';
